@@ -8,7 +8,7 @@
             width: 50px; height: 50px;
             background: #00ff88;
             position: absolute;
-            transition: all 0.1s linear; /* Плавное движение */
+            transition: all 0.1s linear;
             border-radius: 8px;
             box-shadow: 0 0 15px #00ff88;
         }
@@ -19,7 +19,6 @@
 
     <script>
         const box = document.getElementById('box');
-        // Твой адрес через playit.gg
         const url = 'http://yen-faith.gl.at.ply.gg:2465';
 
         async function getCoords() {
@@ -33,8 +32,6 @@
                 console.error('Сервер недоступен:', err);
             }
         }
-
-        // Запрашиваем координаты каждые 100 мс (10 раз в секунду)
         setInterval(getCoords, 100);
     </script>
 </body>
