@@ -18,21 +18,23 @@
     <div id="box"></div>
 
     <script>
-        const box = document.getElementById('box');
-        const url = 'http://yen-faith.gl.at.ply.gg:2465';
+    const box = document.getElementById('box');
+    const url = 'http://yen-faith.gl.at.ply.gg:2465';
 
-        async function getCoords() {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                box.style.left = data.x + 'px';
-                box.style.top = data.y + 'px';
-            } catch (err) {
-                console.error('Сервер недоступен:', err);
-            }
+    async function updatePosition() {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Ошибка сети');
+            
+            const data = await response.json();
+            
+            box.style.left = data.x + 'px';
+            box.style.top = data.y + 'px';
+        } catch (err) {
+            console.log("Ждем сервер...", err.message);
         }
-        setInterval(getCoords, 100);
-    </script>
+    }
+    setInterval(updatePosition, 50);
+</script>
 </body>
 </html>
